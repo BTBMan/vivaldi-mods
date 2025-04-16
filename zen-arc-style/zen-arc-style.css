@@ -1,0 +1,246 @@
+/* cspell:disable */
+#browser #main {
+  --radius: 6px;
+}
+
+/* #browser {
+  #main {
+    .mainbar {
+      background: black;
+    }
+
+    .inner {
+      .tabbar-wrapper {
+      }
+    }
+  }
+} */
+
+/* toolbar */
+#browser.mac.address-top .toolbar:has(.window-buttongroup.on-mainbar) {
+  min-height: calc(32px / var(--uiZoomLevel));
+}
+
+.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred
+  #main {
+  --colorMainBg: var(--colorAccentBgFaded);
+}
+
+.mainbar .toolbar-mainbar {
+  height: 26px;
+}
+
+#main {
+  --colorMainBg: var(--colorAccentBg);
+  background: var(--colorMainBg);
+}
+
+.mainbar {
+  background: transparent;
+  color: var(--colorAccentFg);
+}
+
+.address-bottom .mainbar {
+  border: 0;
+}
+
+.SearchField,
+.MailSearchField-Inner,
+.UrlBar-AddressField {
+  background: none;
+  border: none;
+  outline: none !important;
+  --textColor: var(--colorAccentFg);
+  transition: all 0.1s;
+}
+
+.SearchField:hover,
+.MailSearchField-Inner:hover,
+.UrlBar-AddressField:hover,
+.SearchField:focus-within,
+.MailSearchField-Inner:focus-within,
+.UrlBar-AddressField:focus-within {
+  background: white;
+  --textColor: black;
+}
+
+.SearchField,
+.MailSearchField-Inner,
+.UrlBar-AddressField {
+  color: var(--textColor) !important;
+}
+
+#browser.isblurred.dim-blurred .manager-editor,
+#browser.isblurred.dim-blurred
+  .toolbar:not(.toolbar-mainbar, .toolbar-statusbar) {
+  color: var(--textColor) !important;
+}
+
+.UrlFragment-Wrapper {
+  color: var(--textColor) !important;
+}
+
+.UrlFragment--Highlight {
+  color: var(--textColor) !important;
+  font-weight: blod;
+}
+
+.toolbar-mainbar .toolbar-extensions > .button-toolbar > button,
+.toolbar-mainbar .page-zoom-controls > .button-toolbar > button,
+.toolbar-mainbar > .button-toolbar > button,
+.toolbar-mainbar
+  .toolbar-extensions
+  > .toolbar-group
+  > .button-toolbar
+  > button,
+.toolbar-mainbar
+  .page-zoom-controls
+  > .toolbar-group
+  > .button-toolbar
+  > button,
+.toolbar-mainbar > .toolbar-group > .button-toolbar > button {
+  height: 24px;
+}
+
+.density-on .UrlBar-SearchField,
+.density-on .UrlBar-AddressField {
+  height: 24px;
+}
+
+.dim-blurred:not(.hasfocus) .SearchField,
+.dim-blurred:not(.hasfocus) .MailSearchField-Inner,
+.dim-blurred:not(.hasfocus) .UrlBar-AddressField {
+  border: none;
+}
+
+/* tab sidebar */
+#tabs-tabbar-container.left .tab-position:not(.accordion-toggle-arrow),
+#tabs-tabbar-container.right .tab-position:not(.accordion-toggle-arrow) {
+  /* padding: 0 3px; */
+}
+
+#browser.tabs-left #main .inner > .tabbar-wrapper > .tabbar-wrapper {
+  --radius: 9px;
+  --densityGap: 6px;
+}
+
+.tabs-left .button-toolbar.workspace-popup.tabbar-workspace-button,
+.tabs-right .button-toolbar.workspace-popup.tabbar-workspace-button {
+  /* --densityGap: 8px; */
+  min-width: 42px;
+  box-shadow: none;
+}
+
+#browser #tabs-tabbar-container.left {
+  box-shadow: none !important;
+}
+
+.tabs-left #tabs-tabbar-container {
+  min-width: 42px;
+}
+
+.tabs-left #tabs-tabbar-container {
+  /* padding: 0 2px; */
+  /* box-sizing: border-box; */
+}
+
+.tabs-left .tab.tab-small {
+  position: relative;
+  overflow: visible !important;
+}
+
+.tabs-left .tab.tab-small .tab-header {
+  overflow: visible !important;
+}
+
+.tabs-left .tab.tab-small .tab-header .close {
+  position: absolute;
+  top: -5px;
+  right: -3px;
+  margin: 0 !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  opacity: 1 !important;
+  background: #eee;
+  box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  transform: scale(0.8);
+  color: #000;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.tabs-left .tab.tab-small:hover .close {
+  display: block;
+}
+
+.tabs-left .tab.tab-small .tab-header .close svg {
+  transform: scale(0.8);
+}
+
+.tabs-left .tab-position {
+  /* --Height: 43px !important;
+  transform: translateX(var(--PositionX))
+    translateY(calc(var(--PositionY) + 10px)); */
+  /* --OldWidth: --Width; */
+  /* --OldWidth: 200px; */
+  /* --Width: calc(var(--OldWidth) - 12px) !important; */
+  /* --Width: 180px !important; */
+}
+
+.tabs-left .tab-position .tab-wrapper {
+  margin-bottom: 3px;
+}
+
+.tabs-left .tab .tab-header {
+  /* flex: 0 0 40px; */
+  /* --Width: calc(var(--OldWidth) - 12px) !important; */
+  max-width: calc(var(--Width) - (var(--densityGap) - 3px) * 2);
+  padding-left: calc((30px - 20px) / 2);
+  /* min-width: 30px; */
+}
+
+.tab .favicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px !important;
+  height: 20px;
+}
+
+.tab .favicon img {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.tabs-left .tab .title {
+  font-size: 12px;
+}
+
+.separator hr {
+  border: 0;
+  border-bottom: 1px solid var(--colorAccentFg);
+}
+
+/* bottom urlbar to top */
+.address-bottom #main > .mainbar,
+.address-bottom-off #main > .mainbar {
+  order: 0;
+}
+
+#browser:not(.win, .fullscreen, .disable-titlebar) #header {
+  display: none;
+}
+
+#webview-container {
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+#webpage-stack {
+  border-radius: 8px;
+  box-shadow: 0 0 9.73px 0px
+    light-dark(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25));
+}
