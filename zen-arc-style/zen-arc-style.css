@@ -1,8 +1,4 @@
 /* cspell:disable */
-#browser #main {
-  --radius: 6px;
-}
-
 /* #browser {
   #main {
     .mainbar {
@@ -15,6 +11,14 @@
     }
   }
 } */
+
+#browser #main {
+  --radius: 6px;
+}
+
+#main > .inner {
+  overflow: visible;
+}
 
 /* toolbar */
 #browser.mac.address-top .toolbar:has(.window-buttongroup.on-mainbar) {
@@ -243,4 +247,8 @@
   border-radius: 8px;
   box-shadow: 0 0 9.73px 0px
     light-dark(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25));
+}
+
+#browser.tabs-off #webview-container {
+  padding-left: 10px;
 }
