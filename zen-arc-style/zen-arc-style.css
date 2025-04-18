@@ -2,7 +2,8 @@
 
 #browser {
   &.tabs-left,
-  &.tabs-right {
+  &.tabs-right,
+  &.tabs-off {
     &.address-top,
     &.address-top-off {
       &.dim-blurred {
