@@ -174,12 +174,36 @@
                   &:not(.button-menu) {
                     .ToolbarButton-Button {
                       padding-left: 3px;
+
+                      .button-icon {
+                        &.audio {
+                          position: absolute;
+                          left: 4px;
+                          bottom: -3px;
+                          border-radius: var(--radiusRound);
+                          transform: scale(0.625);
+                          background-color: #fff;
+                        }
+                      }
                     }
                   }
 
                   &.button-menu {
+                    .ToolbarButton-Button {
+                      .button-icon {
+                        margin-left: 4px;
+                      }
+                    }
+                  }
+
+                  .ToolbarButton-Button {
                     .button-icon {
-                      margin-left: 4px;
+                      &.audio {
+                        margin: 0;
+                        height: 20px;
+                        width: 20px;
+                        opacity: 1;
+                      }
                     }
                   }
                 }
@@ -296,6 +320,24 @@
 
                               &:hover {
                                 background: #e6e6e6;
+                              }
+                            }
+
+                            .tab-audio {
+                              position: absolute;
+                              left: -3px;
+                              top: 11px;
+                              padding: 2px;
+                              transition: transform 100ms ease-in;
+                              transition-delay: 0ms;
+                              height: 20px;
+                              width: 20px;
+                              border-radius: var(--radiusRound);
+                              transform: scale(0.625);
+                              background-color: #fff;
+
+                              &:hover {
+                                transform: scale(0.69);
                               }
                             }
                           }
