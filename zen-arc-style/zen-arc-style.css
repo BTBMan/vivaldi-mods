@@ -1,400 +1,346 @@
 /* cspell:disable */
-/* #browser {
-  #main {
-    .mainbar {
-      background: black;
+
+#browser {
+  &.tabs-left,
+  &.tabs-right {
+    &.address-top,
+    &.address-top-off {
+      &.dim-blurred {
+        &:not(.hasfocus) {
+          .SearchField,
+          .MailSearchField-Inner,
+          .UrlBar-AddressField {
+            border: none;
+          }
+        }
+
+        &.isblurred {
+          .manager-editor,
+          .toolbar:not(.toolbar-mainbar, .toolbar-statusbar) {
+            color: var(--textColor) !important;
+          }
+
+          &.color-behind-tabs-on {
+            &:not(.transparent-tabbar) {
+              #main {
+                --colorMainBg: var(--colorAccentBgFaded);
+              }
+            }
+          }
+        }
+      }
+
+      &.density-on {
+        .UrlBar-SearchField,
+        .UrlBar-AddressField {
+          height: var(--toolbarButtonHeight);
+        }
+      }
+
+      #header {
+        display: none;
+      }
+
+      #main {
+        .mainbar {
+          background: transparent;
+          color: var(--colorAccentFg);
+          border: 0;
+          padding: 3px 15px;
+
+          .toolbar {
+            height: var(--toolbarHeight);
+
+            .SearchField,
+            .MailSearchField-Inner,
+            .UrlBar-AddressField {
+              --textColor: var(--colorAccentFg);
+              background: none;
+              border: none;
+              outline: none !important;
+              transition: all 0.2s;
+              color: var(--textColor) !important;
+              height: var(--toolbarButtonHeight);
+
+              &:hover {
+                background: var(--colorBgDark);
+                --textColor: black;
+              }
+
+              &:focus-within {
+                background: white;
+                --textColor: black;
+              }
+
+              .button-toolbar > button {
+                transition: none;
+              }
+            }
+
+            .UrlBar-SearchField,
+            .UrlBar-AddressField {
+              opacity: 1;
+              transform: unset;
+              position: relative;
+              margin: 0;
+              width: unset;
+              align-self: unset;
+              flex: 4;
+              box-shadow: none;
+            }
+
+            .UrlBar-AddressField {
+              .UrlFragment-Wrapper {
+                color: var(--textColor) !important;
+              }
+
+              .UrlFragment--Highlight {
+                color: var(--textColor) !important;
+                font-weight: bold;
+              }
+
+              .pageload {
+                color: var(--textColor) !important;
+              }
+
+              .SiteInfoButton.warning {
+                color: var(--textColor) !important;
+              }
+
+              .BookmarkButton {
+                display: none;
+              }
+            }
+
+            .toolbar-extensions > .button-toolbar > button,
+            .page-zoom-controls > .button-toolbar > button,
+            > .button-toolbar > button,
+            .toolbar-extensions > .toolbar-group > .button-toolbar > button,
+            .page-zoom-controls > .toolbar-group > .button-toolbar > button,
+            > .toolbar-group > .button-toolbar > button {
+              height: var(--toolbarButtonHeight);
+              transition: all 0.2s;
+
+              &:hover {
+                color: black;
+              }
+            }
+
+            .toolbar-extensions:not(.toolbar-noflex),
+            .page-zoom-controls:not(.toolbar-noflex),
+            &:not(.toolbar-noflex) {
+              max-height: unset;
+            }
+
+            &:not(.toolbar-noflex) {
+              > .vivaldi,
+              > .toolbar-extensions,
+              > .page-zoom-controls,
+              > .button-toolbar,
+              > .button-textonly:not(.UrlBar-AddressField, .UrlBar-SearchField),
+              > .Bar-PrivateWindowIndicator,
+              > .SearchField:not(.UrlBar-SearchField) {
+                display: flex;
+              }
+            }
+          }
+        }
+      }
     }
 
-    .inner {
-      .tabbar-wrapper {
+    #main {
+      --radius: 6px;
+      --colorMainBg: var(--colorAccentBg);
+      --toolbarHeight: 26px;
+      --toolbarButtonHeight: 24px;
+      --minSidebarWidth: 48px;
+      background: var(--colorMainBg);
+
+      > .inner {
+        overflow: visible;
+
+        > .tabbar-wrapper {
+          > .tabbar-wrapper {
+            --radius: 9px;
+            --densityGap: 6px;
+
+            .button-toolbar {
+              &.workspace-popup {
+                &.tabbar-workspace-button {
+                  min-width: var(--minSidebarWidth);
+                  box-shadow: none;
+                  font-weight: bold;
+
+                  &:not(.button-menu) {
+                    .ToolbarButton-Button {
+                      padding-left: 3px;
+                    }
+                  }
+
+                  &.button-menu {
+                    .button-icon {
+                      margin-left: 4px;
+                    }
+                  }
+                }
+              }
+            }
+
+            #tabs-tabbar-container {
+              container-name: tabs-tabbar-container;
+              container-type: inline-size;
+              box-shadow: none !important;
+              padding-top: 15px;
+              min-width: var(--minSidebarWidth);
+
+              .separator {
+                width: 100%;
+
+                hr {
+                  border: 0;
+                  border-bottom: 1px solid var(--colorAccentFg);
+                }
+              }
+
+              #tabs-container {
+                .resize {
+                  .tab-strip {
+                    padding-top: 4px;
+
+                    &.overflow {
+                      &::-webkit-scrollbar {
+                        width: 0;
+                      }
+                    }
+
+                    .tab-position {
+                      .tab-wrapper {
+                        margin: 0;
+                        margin-bottom: 3px;
+                        padding: 0 var(--densityGap);
+                      }
+
+                      .tab {
+                        width: 100%;
+                        transition: all 0.2s;
+
+                        .tab-header {
+                          /* minSidebarWidth - densityGap - faviconWidth */
+                          padding-left: calc(
+                            (
+                                var(--minSidebarWidth) - var(--densityGap) * 2 -
+                                  20px
+                              ) / 2
+                          );
+                          max-width: 100%;
+                          border: none;
+                        }
+
+                        .favicon {
+                          &.progress {
+                            margin: 0 !important;
+                            margin: 0 2px !important;
+                          }
+
+                          &:not(.progress) {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            min-width: 20px !important;
+                            height: 20px;
+                            display: flex !important;
+                            min-height: 20px !important;
+                            width: 20px !important;
+                            flex: 0 0 20px !important;
+
+                            img {
+                              width: 18px !important;
+                              height: 18px !important;
+                            }
+                          }
+                        }
+
+                        .title {
+                          display: flex;
+                          font-size: 12px;
+                        }
+                      }
+
+                      @container tabs-tabbar-container (inline-size < 73px) {
+                        .tab {
+                          position: relative;
+                          overflow: visible !important;
+
+                          .tab-header {
+                            overflow: visible !important;
+
+                            .close {
+                              position: absolute;
+                              top: -5px;
+                              right: -3px;
+                              margin: 0 !important;
+                              min-width: 16px !important;
+                              min-height: 16px !important;
+                              width: 16px !important;
+                              height: 16px !important;
+                              opacity: 1 !important;
+                              background: #eee;
+                              box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+                              transform: scale(0.8);
+                              color: #000;
+                              transition: all 0.2s;
+
+                              svg {
+                                transform: scale(0.8);
+                              }
+
+                              &:hover {
+                                background: #e6e6e6;
+                              }
+                            }
+                          }
+
+                          &:hover {
+                            .close {
+                              display: block;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        #webview-container {
+          padding-right: 10px;
+          padding-bottom: 10px;
+
+          #webpage-stack {
+            border-radius: 8px;
+            box-shadow: 0 0 9.73px 0px
+              light-dark(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25));
+          }
+        }
       }
     }
   }
-} */
 
-#browser #main {
-  --radius: 6px;
-}
-
-#main > .inner {
-  overflow: visible;
-}
-
-/* toolbar */
-#browser.mac.address-top .toolbar:has(.window-buttongroup.on-mainbar) {
-  min-height: calc(32px / var(--uiZoomLevel));
-}
-
-.color-behind-tabs-on:not(.transparent-tabbar)#browser.isblurred.dim-blurred
-  #main {
-  --colorMainBg: var(--colorAccentBgFaded);
-}
-
-.mainbar .toolbar-mainbar {
-  height: 26px;
-}
-
-#main {
-  --colorMainBg: var(--colorAccentBg);
-  background: var(--colorMainBg);
-}
-
-.mainbar {
-  background: transparent;
-  color: var(--colorAccentFg);
-  border: 0;
-}
-
-.SearchField,
-.MailSearchField-Inner,
-.UrlBar-AddressField {
-  background: none;
-  border: none;
-  outline: none !important;
-  --textColor: var(--colorAccentFg);
-  transition: all 0.1s;
-}
-
-.SearchField:hover,
-.MailSearchField-Inner:hover,
-.UrlBar-AddressField:hover,
-.SearchField:focus-within,
-.MailSearchField-Inner:focus-within,
-.UrlBar-AddressField:focus-within {
-  background: white;
-  --textColor: black;
-}
-
-.SearchField,
-.MailSearchField-Inner,
-.UrlBar-AddressField {
-  color: var(--textColor) !important;
-}
-
-#browser.isblurred.dim-blurred .manager-editor,
-#browser.isblurred.dim-blurred
-  .toolbar:not(.toolbar-mainbar, .toolbar-statusbar) {
-  color: var(--textColor) !important;
-}
-
-.UrlFragment-Wrapper {
-  color: var(--textColor) !important;
-}
-
-.UrlFragment--Highlight {
-  color: var(--textColor) !important;
-  font-weight: bold;
-}
-
-.UrlBar-AddressField .pageload {
-  color: var(--textColor) !important;
-}
-
-.SiteInfoButton.warning {
-  color: var(--textColor) !important;
-}
-
-.toolbar-mainbar .toolbar-extensions > .button-toolbar > button,
-.toolbar-mainbar .page-zoom-controls > .button-toolbar > button,
-.toolbar-mainbar > .button-toolbar > button,
-.toolbar-mainbar
-  .toolbar-extensions
-  > .toolbar-group
-  > .button-toolbar
-  > button,
-.toolbar-mainbar
-  .page-zoom-controls
-  > .toolbar-group
-  > .button-toolbar
-  > button,
-.toolbar-mainbar > .toolbar-group > .button-toolbar > button {
-  height: 24px;
-}
-
-.density-on .UrlBar-SearchField,
-.density-on .UrlBar-AddressField {
-  height: 24px;
-}
-
-.dim-blurred:not(.hasfocus) .SearchField,
-.dim-blurred:not(.hasfocus) .MailSearchField-Inner,
-.dim-blurred:not(.hasfocus) .UrlBar-AddressField {
-  border: none;
-}
-
-/* bottom urlbar to top */
-/* .address-bottom #main > .mainbar,
-.address-bottom-off #main > .mainbar {
-  order: 0;
-} */
-
-/* make top address display */
-.tabs-left.address-top-off
-  #main
-  .toolbar-mainbar
-  .toolbar-extensions:not(.toolbar-noflex),
-.tabs-left.address-top-off
-  #main
-  .toolbar-mainbar
-  .page-zoom-controls:not(.toolbar-noflex),
-.address-top-off #main .toolbar-mainbar:not(.toolbar-noflex) {
-  max-height: unset;
-}
-
-.tabs-left.address-top-off #header {
-  display: none;
-}
-
-.tabs-left.address-top-off .mainbar {
-  padding: 3px 15px;
-}
-
-.address-top-off #main .toolbar-mainbar:not(.toolbar-noflex) > .vivaldi,
-.address-top-off
-  #main
-  .toolbar-mainbar:not(.toolbar-noflex)
-  > .toolbar-extensions,
-.address-top-off
-  #main
-  .toolbar-mainbar:not(.toolbar-noflex)
-  > .page-zoom-controls,
-.address-top-off #main .toolbar-mainbar:not(.toolbar-noflex) > .button-toolbar,
-.address-top-off
-  #main
-  .toolbar-mainbar:not(.toolbar-noflex)
-  > .button-textonly:not(.UrlBar-AddressField, .UrlBar-SearchField),
-.address-top-off
-  #main
-  .toolbar-mainbar:not(.toolbar-noflex)
-  > .UrlBar-PrivateWindowIndicator,
-.address-top-off
-  #main
-  .toolbar-mainbar:not(.toolbar-noflex)
-  > .SearchField:not(.UrlBar-SearchField) {
-  display: flex;
-}
-
-.tabs-left.address-top-off .toolbar-mainbar .UrlBar-SearchField,
-.tabs-left.address-top-off .toolbar-mainbar .UrlBar-AddressField {
-  opacity: 1;
-  transform: unset;
-  position: unset;
-  margin: 0;
-  width: unset;
-  align-self: unset;
-  flex: 4;
-  box-shadow: none;
-}
-
-.BookmarkButton {
-  display: none;
-}
-
-/* tab sidebar */
-#tabs-tabbar-container.left .tab-position:not(.accordion-toggle-arrow),
-#tabs-tabbar-container.right .tab-position:not(.accordion-toggle-arrow) {
-  /* padding: 0 3px; */
-}
-
-#browser.tabs-left #main .inner > .tabbar-wrapper > .tabbar-wrapper {
-  --radius: 9px;
-  --densityGap: 6px;
-}
-
-#tabs-tabbar-container {
-  container-name: tabs-tabbar-container;
-  container-type: inline-size;
-}
-
-.tabs-left .button-toolbar.workspace-popup.tabbar-workspace-button,
-.tabs-right .button-toolbar.workspace-popup.tabbar-workspace-button {
-  /* --densityGap: 8px; */
-  min-width: 48px;
-  box-shadow: none;
-  font-weight: bold;
-}
-
-.tabs-left
-  .button-toolbar.workspace-popup.tabbar-workspace-button:not(.button-menu)
-  .ToolbarButton-Button {
-  padding-right: 3px;
-}
-
-#browser .workspace-popup .button-icon.override,
-#browser .WorkspacePopup .button-icon.override,
-#browser .tabbar-workspace-button .button-icon.override,
-#browser .workspace-popup .button-icon.override svg,
-#browser .WorkspacePopup .button-icon.override svg,
-#browser .tabbar-workspace-button .button-icon.override svg {
-  /* width: 30px;
-  height: 30px; */
-}
-
-#browser #tabs-tabbar-container.left {
-  box-shadow: none !important;
-  padding-top: 15px;
-}
-
-#tabs-tabbar-container #tabs-container .resize .tab-strip {
-  padding-top: 4px;
-}
-
-#tabs-tabbar-container #tabs-container .resize .overflow::-webkit-scrollbar {
-  width: 0;
-}
-
-.tabs-left #tabs-tabbar-container {
-  min-width: 48px;
-}
-
-.tabs-left #tabs-tabbar-container {
-  /* padding: 0 2px; */
-  /* box-sizing: border-box; */
-}
-
-/* small size */
-@container tabs-tabbar-container (inline-size < 73px) {
-  .tabs-left .tab {
-    position: relative;
-    overflow: visible !important;
+  &:not(.alt-tabs) {
+    .tab {
+      &:hover.tab-small:not(.tab-mini).active .favicon,
+      &.force-hover.tab-small:not(.tab-mini).active .favicon {
+        max-width: 16px;
+      }
+    }
   }
 
-  .tabs-left .tab .tab-header {
-    overflow: visible !important;
+  &.tabs-off {
+    #webview-container {
+      padding-left: 10px;
+    }
   }
-
-  .tabs-left .tab .tab-header .close {
-    position: absolute;
-    top: -5px;
-    right: -3px;
-    margin: 0 !important;
-    min-width: 16px !important;
-    min-height: 16px !important;
-    width: 16px !important;
-    height: 16px !important;
-    opacity: 1 !important;
-    background: #eee;
-    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
-    transform: scale(0.8);
-    color: #000;
-  }
-
-  .tabs-left .tab:hover .close {
-    display: block;
-  }
-
-  .tabs-left .tab .tab-header .close svg {
-    transform: scale(0.8);
-  }
-}
-
-/* .tabs-left .tab.tab-small {
-  position: relative;
-  overflow: visible !important;
-} */
-
-/* .tabs-left .tab.tab-small .tab-header {
-  overflow: visible !important;
-} */
-
-/* .tabs-left .tab.tab-small:hover .close {
-  display: block;
-} */
-
-/* .tabs-left .tab.tab-small .tab-header .close svg {
-  transform: scale(0.8);
-} */
-
-.tabs-left .tab-position {
-  /* --Height: 43px !important;
-  transform: translateX(var(--PositionX))
-    translateY(calc(var(--PositionY) + 10px)); */
-  /* --OldWidth: --Width; */
-  /* --OldWidth: 200px; */
-  /* --Width: calc(var(--OldWidth) - 12px) !important; */
-  /* --Width: 180px !important; */
-}
-
-.tabs-left .tab-position .tab-wrapper {
-  margin: 0;
-  margin-bottom: 3px;
-  padding: 0 var(--densityGap);
-}
-
-.tabs-left .tab {
-  width: 100%;
-}
-
-.tabs-left .tab .tab-header {
-  /* flex: 0 0 40px; */
-  /* --Width: calc(var(--OldWidth) - 12px) !important; */
-  /* max-width: calc(var(--Width) - (var(--densityGap) - 3px) * 2); */
-  padding-left: calc((36px - 20px) / 2);
-  max-width: 100%;
-}
-
-.tab .favicon:not(.progress) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 20px !important;
-  height: 20px;
-  display: flex !important;
-  min-height: 20px !important;
-  width: 20px !important;
-  flex: 0 0 20px !important;
-}
-
-.tab .favicon.progress {
-  margin: 0 !important;
-  margin: 0 2px !important;
-}
-
-.tab .favicon:not(.progress) img {
-  width: 18px !important;
-  height: 18px !important;
-}
-
-#browser:not(.alt-tabs) .tab:hover.tab-small:not(.tab-mini).active .favicon,
-#browser:not(.alt-tabs)
-  .tab.force-hover.tab-small:not(.tab-mini).active
-  .favicon {
-  max-width: 16px;
-}
-
-.tabs-left .tab .title {
-  font-size: 12px;
-}
-
-.separator hr {
-  border: 0;
-  border-bottom: 1px solid var(--colorAccentFg);
-}
-
-#tabs-tabbar-container .separator {
-  width: 100%;
-}
-
-#tabs-tabbar-container .separator.separator-wsbutton {
-  /* display: none; */
-}
-
-/* webview */
-/* #browser:not(.win, .fullscreen, .disable-titlebar) #header {
-  display: none;
-} */
-
-#webview-container {
-  padding-right: 10px;
-  padding-bottom: 10px;
-}
-
-#webpage-stack {
-  border-radius: 8px;
-  box-shadow: 0 0 9.73px 0px
-    light-dark(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25));
-}
-
-#browser.tabs-off #webview-container {
-  padding-left: 10px;
 }
