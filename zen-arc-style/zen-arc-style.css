@@ -18,14 +18,12 @@
         &.isblurred {
           .manager-editor,
           .toolbar:not(.toolbar-mainbar, .toolbar-statusbar) {
-            color: var(--textColor) !important;
+            color: var(--colorAccentFg) !important;
           }
 
           &.color-behind-tabs-on {
             &:not(.transparent-tabbar) {
-              #main {
-                --colorMainBg: var(--colorAccentBgFaded);
-              }
+              --colorMainBg: var(--colorAccentBgFaded);
             }
           }
         }
@@ -44,7 +42,7 @@
 
       #main {
         .mainbar {
-          background: transparent;
+          background: none;
           color: var(--colorAccentFg);
           border: 0;
           padding: 3px 15px;
@@ -55,22 +53,21 @@
             .SearchField,
             .MailSearchField-Inner,
             .UrlBar-AddressField {
-              --textColor: var(--colorAccentFg);
               background: none;
               border: none;
               outline: none !important;
               transition: all 0.2s;
-              color: var(--textColor) !important;
+              color: var(--colorAccentFg) !important;
               height: var(--toolbarButtonHeight);
 
               &:hover {
                 background: var(--colorBgDark);
-                --textColor: black;
+                --colorAccentFg: black;
               }
 
               &:focus-within {
                 background: white;
-                --textColor: black;
+                --colorAccentFg: black;
               }
 
               .button-toolbar > button {
@@ -92,20 +89,20 @@
 
             .UrlBar-AddressField {
               .UrlFragment-Wrapper {
-                color: var(--textColor) !important;
+                color: var(--colorAccentFg) !important;
               }
 
               .UrlFragment--Highlight {
-                color: var(--textColor) !important;
+                color: var(--colorAccentFg) !important;
                 font-weight: bold;
               }
 
               .pageload {
-                color: var(--textColor) !important;
+                color: var(--colorAccentFg) !important;
               }
 
               .SiteInfoButton.warning {
-                color: var(--textColor) !important;
+                color: var(--colorAccentFg) !important;
               }
 
               .BookmarkButton {
@@ -148,23 +145,29 @@
         }
       }
     }
+    --colorMainBg: var(--colorAccentBg);
+    --toolbarHeight: 26px;
+    --toolbarButtonHeight: 24px;
+    --minSidebarWidth: 48px;
+    --viewRadius: 10px;
+    --viewPadding: 10px;
+    background-color: var(--colorMainBg);
 
     #main {
       --radius: 6px;
-      --colorMainBg: var(--colorAccentBg);
-      --toolbarHeight: 26px;
-      --toolbarButtonHeight: 24px;
-      --minSidebarWidth: 48px;
-      --viewRadius: 10px;
-      background: var(--colorMainBg);
+      background-color: var(--colorMainBg);
 
       > .inner {
         overflow: visible;
 
         > .tabbar-wrapper {
+          background: none;
+          padding-bottom: var(--viewPadding);
+
           > .tabbar-wrapper {
             --radius: 9px;
             --densityGap: 6px;
+            background: none;
 
             .button-toolbar {
               &.workspace-popup {
@@ -172,6 +175,7 @@
                   min-width: var(--minSidebarWidth);
                   box-shadow: none;
                   font-weight: bold;
+                  background: none;
 
                   &:not(.button-menu) {
                     .ToolbarButton-Button {
@@ -218,6 +222,7 @@
               box-shadow: none !important;
               padding-top: 15px;
               min-width: var(--minSidebarWidth);
+              background: none;
 
               .separator {
                 width: 100%;
@@ -362,9 +367,25 @@
         #panels-container {
           border: none;
           background: none;
+          color: var(--colorAccentFg);
+          padding-bottom: var(--viewPadding);
 
           &.right {
-            margin-left: -10px;
+            margin-left: calc(var(--viewPadding) - var(--viewPadding) * 2);
+
+            #panels {
+              #switch {
+                &.slim-scrollbar {
+                  &::-webkit-scrollbar {
+                    width: 0;
+                  }
+                }
+
+                > .toolbar-panel {
+                  margin: 0;
+                }
+              }
+            }
           }
 
           &:not(.icons) {
@@ -374,17 +395,47 @@
           .panel-group {
             border-radius: var(--viewRadius);
           }
+
+          .button-toolbar {
+            > button {
+              transition: all 0.2s;
+            }
+          }
+        }
+
+        .StatusInfo {
+          --radiusRounded: 20px;
+          z-index: 4;
+          margin-left: 10px;
+          margin-bottom: 10px;
         }
 
         #webview-container {
-          padding-right: var(--viewRadius);
-          padding-bottom: var(--viewRadius);
+          padding-right: var(--viewPadding);
+          padding-bottom: var(--viewPadding);
           z-index: 4;
 
           #webpage-stack {
-            border-radius: 8px;
+            border-radius: var(--viewRadius);
             box-shadow: 0 0 9.73px 0px
               light-dark(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25));
+          }
+        }
+      }
+    }
+
+    #footer {
+      border: none !important;
+      margin-top: -10px;
+      background-color: var(--colorMainBg) !important;
+      color: var(--colorAccentFg) !important;
+
+      .button-toolbar {
+        > button {
+          transition: all 0.5s;
+
+          &.button-pressed {
+            color: black;
           }
         }
       }
@@ -402,7 +453,7 @@
 
   &.tabs-off {
     #webview-container {
-      padding-left: var(--viewRadius);
+      padding-left: var(--viewPadding);
     }
   }
 }
