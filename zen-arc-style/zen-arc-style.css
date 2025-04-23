@@ -65,13 +65,13 @@
 
                 &:hover {
                   background: var(--colorBgDark);
-                  --colorAccentFg: black;
+                  --colorAccentFg: var(--colorFg);
                 }
 
-                &:focus-within {
+                /* &:focus-within {
                   background: white;
                   --colorAccentFg: black;
-                }
+                } */
 
                 .button-toolbar > button {
                   transition: none;
@@ -91,6 +91,15 @@
               }
 
               .UrlBar-AddressField {
+                .UrlBar-UrlFieldWrapper {
+                  .observer {
+                    .OmniDropdown {
+                      /* --colorFg: black;
+                      background: white; */
+                    }
+                  }
+                }
+
                 .UrlFragment-Wrapper {
                   color: var(--colorAccentFg) !important;
                 }
@@ -122,8 +131,12 @@
                 height: var(--toolbarButtonHeight);
                 transition: all 0.2s;
 
+                &.button-pressed {
+                  color: var(--colorFg);
+                }
+
                 &:hover {
-                  color: black;
+                  color: var(--colorFg);
                 }
               }
 
@@ -333,7 +346,7 @@
                                 }
 
                                 &:hover {
-                                  background: #e6e6e6;
+                                  background: #d3d3d3;
                                 }
                               }
 
@@ -404,6 +417,13 @@
             }
 
             .button-toolbar {
+              &.active {
+                > button {
+                  color: var(--colorFg);
+                  background-color: var(--colorBgDark);
+                }
+              }
+
               > button {
                 transition: all 0.2s;
               }
@@ -442,7 +462,7 @@
             transition: all 0.5s;
 
             &.button-pressed {
-              color: black;
+              color: var(--colorFg);
             }
           }
         }
