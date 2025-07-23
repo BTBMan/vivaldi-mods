@@ -61,6 +61,7 @@
                 outline: none !important;
                 transition: all 0.2s;
                 color: var(--colorAccentFg) !important;
+                /* color: var(--colorFg) !important; */
                 height: var(--toolbarButtonHeight);
 
                 &:hover {
@@ -68,10 +69,12 @@
                   --colorAccentFg: var(--colorFg);
                 }
 
-                /* &:focus-within {
-                  background: white;
-                  --colorAccentFg: black;
-                } */
+                &:focus-within {
+                  /* background: white; */
+                  /* --colorAccentFg: black; */
+                  background: var(--colorBgDark);
+                  --colorAccentFg: var(--colorFg);
+                }
 
                 .button-toolbar > button {
                   transition: none;
@@ -192,7 +195,6 @@
               .button-toolbar {
                 &.workspace-popup {
                   &.tabbar-workspace-button {
-                    min-width: var(--minSidebarWidth);
                     box-shadow: none;
                     font-weight: bold;
                     background: none;
@@ -217,7 +219,6 @@
                     &.button-menu {
                       .ToolbarButton-Button {
                         .button-icon {
-                          margin-left: 4px;
                         }
                       }
                     }
@@ -257,11 +258,11 @@
                   .resize {
                     .tab-strip {
                       padding-top: 4px;
+                      margin: 0;
+                      max-width: unset;
 
-                      &.overflow {
-                        &::-webkit-scrollbar {
-                          width: 0;
-                        }
+                      &::-webkit-scrollbar {
+                        width: 0;
                       }
 
                       .tab-position {
