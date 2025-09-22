@@ -50,6 +50,10 @@
             padding-left: 70px;
             -webkit-app-region: drag;
 
+            > .toolbar {
+              display: none;
+            }
+
             .toolbar {
               height: var(--toolbarHeight);
 
@@ -192,6 +196,10 @@
               --densityGap: 6px;
               background: none;
 
+              .toolbar {
+                padding: 0 6px;
+              }
+
               .button-toolbar {
                 &.workspace-popup {
                   &.tabbar-workspace-button {
@@ -275,6 +283,7 @@
                         .tab {
                           width: 100%;
                           transition: all 0.2s;
+                          max-height: unset;
 
                           .tab-header {
                             /* minSidebarWidth - densityGap - faviconWidth */
